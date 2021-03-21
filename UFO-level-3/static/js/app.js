@@ -37,17 +37,29 @@ function runEnter(){
     var filteredDataDC = filteredData.filter(city =>city.city == inputValueCity)
     var filteredDataDS = filteredData.filter(shape =>shape.shape == inputValueShape)
     var filteredDataDCS = filteredDataDC.filter(shape =>shape.shape == inputValueShape)
+    var filteredDataCS = filteredDataCity.filter(shape =>shape.shape == inputValueShape)
+    var filteredDataDCS = filteredDataDC.filter(shape =>shape.shape == inputValueShape)
 
     //if statement to determine what results to push to the web page
+   
 
-    if (inputValue = ""){
-            l3filtedData = filteredDataCity;
-        }
-    else if (inputValueCity = ""){
+    if (inputValue !== "" && inputValueCity == "" && inputValueShape == "") {
             l3filteredData = filteredData;
+        }
+    else if (inputValue == "" && inputValueCity !== "" && inputValueShape == ""){
+         l3filteredData = filteredDataCity;
+    }
+    else if (inputValue == "" && inputValueCity == "" && inputValueShape !== ""){
+         l3filteredData = filteredDataShape;
+    }
+    else if (inputValue !== "" && inputValueCity !== "" && inputValueShape == ""){
+         l3filteredData = filteredDataDC;
+    }
+    else if (inputValue == "" && inputValueCity !== "" && inputValueShape !== ""){
+         l3filteredData = filteredDataCS;
     }
     else {
-            l3filteredData = filteredDataDC
+            l3filteredData = filteredDataDCS
     }   
 
     //----------------------------------------------
@@ -63,6 +75,7 @@ function runEnter(){
     console.log(filteredDataShape)
     console.log(filteredDataDC)
     console.log(filteredDataDS)
+    console.log(filteredDataCS)
     console.log(filteredDataDCS)
 
 
