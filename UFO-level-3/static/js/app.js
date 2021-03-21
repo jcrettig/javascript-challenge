@@ -23,26 +23,31 @@ function runEnter(){
     //Select the input element and get the raw HTML node
     var inputElement = d3.select('#datetime')
     var inputElementCity = d3.select('#city')
+    var inputElementShape = d3.select('#shape')
 
     //Get the value property of the input element
     var inputValue = inputElement.property('value')
     var inputValueCity = inputElementCity.property('value')
+    var inputValueShape = inputElementShape.property('value')
 
     //Use the form input to filter the data by date and/or city
     var filteredData = tableData.filter(date => date.datetime == inputValue)
     var filteredDataCity = tableData.filter(city => city.city == inputValueCity)
-    var filteredDataBoth = filteredData.filter(city =>city.city == inputValueCity )
+    var filteredDataShape = tableData.filter(shape => shape.shape == inputValueShape)
+    var filteredDataDC = filteredData.filter(city =>city.city == inputValueCity)
+    var filteredDataDS = filteredData.filter(shape =>shape.shape == inputValueShape)
+    var filteredDataDCS = filteredDataDC.filter(shape =>shape.shape == inputValueShape)
 
     //if statement to determine what results to push to the web page
 
     if (inputValue = ""){
-            l2filtedData = filteredDataCity;
+            l3filtedData = filteredDataCity;
         }
     else if (inputValueCity = ""){
-            l2filteredData = filteredData;
+            l3filteredData = filteredData;
     }
     else {
-            l2filteredData = filteredDataBoth
+            l3filteredData = filteredDataDC
     }   
 
     //----------------------------------------------
@@ -55,13 +60,17 @@ function runEnter(){
     console.log(tableData)  
     console.log(filteredData)
     console.log(filteredDataCity)
-    console.log(filteredDataBoth)
+    console.log(filteredDataShape)
+    console.log(filteredDataDC)
+    console.log(filteredDataDS)
+    console.log(filteredDataDCS)
+
 
     // ------------------------------------------------------
     // Set UP Table on web page
     // ------------------------------------------------------
 
-    l2filteredData.forEach((ufoSighting) => {
+    l3filteredData.forEach((ufoSighting) => {
         var row = tbody.append('tr')
         Object.entries(ufoSighting).forEach(([key,value])=>{
             var cell = row.append('td')

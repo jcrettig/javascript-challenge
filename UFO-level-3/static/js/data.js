@@ -12,6 +12,15 @@ var data = [{
     city: "benton",
     state: "ar",
     country: "us",
+    shape: "triangle",
+    durationMinutes: "5 mins.",
+    comments: "Test Data."
+  },
+  {
+    datetime: "1/2/2010",
+    city: "benton",
+    state: "ar",
+    country: "us",
     shape: "circle",
     durationMinutes: "5 mins.",
     comments: "Test Data."
